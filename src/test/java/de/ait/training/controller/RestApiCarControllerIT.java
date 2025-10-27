@@ -88,7 +88,8 @@ public class RestApiCarControllerIT {
           //⚙️ Данных нет:
     @Test
     @DisplayName("should return empty list when no cars,status OK ")
-    @Sql(scripts = {"classpath:sql/clear.sql", "classpath:sql/seed_cars.sql"})
+    //@Sql(scripts = {"classpath:sql/clear.sql", "classpath:sql/seed_cars.sql"}) // надо убрать "classpath:sql/seed_cars.sql"(типа данных нет)
+     @Sql(scripts = {"classpath:sql/clear.sql"}) // - правильно
     void shouldReturnEmptyListWhenNoCars() {
         ResponseEntity<Car[]> response = restTemplate.getForEntity(url("/api/cars"), Car[].class);
 
